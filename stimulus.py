@@ -61,7 +61,7 @@ class stimulus:
             scaling = pi*numSamples*(w1/w2-1)/(2*(w2-w1)*log(w1/w2))*(w2-w1)/pi; # Holters2009, Eq.10
 
             # fade-in window. Fade out removed because causes ringing - cropping at zero cross instead
-            taperStart = signal.tukey(numSamples,0)
+            taperStart = signal.windows.tukey(numSamples,0)
             taperWindow = np.ones(shape = (numSamples,))
             taperWindow[0:int(numSamples/2)] = taperStart[0:int(numSamples/2)]
             sinsweep = sinsweep*taperWindow
